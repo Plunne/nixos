@@ -1,12 +1,11 @@
-{ ... }:
-
 {
   # Machine
-  hostname      = "bonbon";
-  machineType   = "desktop"; # "desktop" or "laptop"
-  gpu           = "amd"; # VM -> "vm"
+  hostname = "bonbon";
+  machineType = "desktop"; # "desktop" or "laptop"
+  cpu = "amd"; # "amd" or "intel"
+  gpu = "amd"; # (VM -> "vm")
   kernelVersion = "6_12";
-  stateVersion  = "25.11";
+  stateVersion = "25.11";
 
   # User
   username = "plunne";
@@ -19,10 +18,15 @@
   ];
 
   # Keymap
-  # US et FR
+  keyLayout = "us"; # "us" or "fr"
+  keyVariant = ""; # "" for us, "azerty" for fr
 
   # Miscs
   dockerEnable = true;
   vmwareEnable = false;
-  steamEnable = true;
+  gamingEnable = true;
+  sshEnable = true;
+
+  # isLaptop
+  isLaptop = machineType == "laptop";
 }

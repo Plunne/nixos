@@ -7,4 +7,6 @@
     autoNumlock = true;
     theme = "breeze";
   };
+
+  services.displayManager.defaultSession = "none+awesome";
 }

@@ -1,10 +1,5 @@
-{ lib, ... }:
+{ lib, vars, ... }:
 
-let
-  
-  isLaptop = vars.machineType == "laptop";
-
-in
 {
   # Audio
   services.pulseaudio.enable = false;
@@ -25,17 +20,23 @@ in
   services.blueman.enable = true;
 
   # Brightness
-  programs.light.enable = isLaptop;
-  
+  programs.light.enable = vars.isLaptop;
+
   # Power & Battery
-  services.power-profiles-daemon.enable = isLaptop;
-  services.auto-cpufreq.enable = isLaptop;
+  services.power-profiles-daemon.enable = vars.isLaptop;
+  services.auto-cpufreq.enable = vars.isLaptop;
 
   # Printing
-  services.printing.enable = false;
+  services.printing.enable = true;
+  services.printing.cups-pdf.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   # Touchpad
-  services.libinput = lib.mkIf isLaptop {
+  services.libinput = lib.mkIf vars.isLaptop {
     enable = true;
     touchpad = {
       tapping = true;

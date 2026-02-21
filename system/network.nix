@@ -1,4 +1,4 @@
-{ vars, ... }:
+{ lib, vars, ... }:
 
 {
   networking.hostName = vars.hostname;
@@ -77,6 +77,15 @@
   services.avahi = {
     enable = true;
     nssmdns4 = true;
+  };
+
+  # SSH
+  services.openssh = lib.mkIf vars.sshEnable {
+    enable = true;
+    settings = {
+      PasswordAuthentication = true;
+      PermitRootLogin = "yes";
+    };
   };
 
   # Firewall

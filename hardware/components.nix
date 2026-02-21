@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   vars,
@@ -57,6 +58,9 @@ in
 
   programs.dconf.enable = true;
 
+  # GPU Driver
+  services.xserver.videoDrivers = gpuDrivers.${vars.gpu} or [ "modesettings" ];
+
   # GPU
   hardware.graphics = {
     enable = true;
@@ -64,5 +68,13 @@ in
     extraPackages = gpuPackages.${vars.gpu} or [ ];
     extraPackages32 = gpuPackages32.${vars.gpu} or [ ];
   };
+
+  # CPU Microcode
+  hardware.cpu.amd.updateMicrocode = lib.mkIf (vars.cpu == "amd") (
+    lib.mkDefault config.hardware.enableRedistributableFirmware
+  );
+  hardware.cpu.intel.updateMicrocode = lib.mkIf (vars.cpu == "intel") (
+    lib.mkDefault config.hardware.enableRedistributableFirmware
+  );
 
 }

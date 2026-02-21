@@ -4,7 +4,7 @@
   # User
   users.users.${vars.username} = {
     isNormalUser = true;
-    description = vars.userDescription;
+    description = vars.username;
     extraGroups = vars.userGroups;
     shell = pkgs.zsh;
     packages = with pkgs; [ ];

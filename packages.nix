@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  vars,
   ...
 }:
 
@@ -9,111 +10,45 @@
     with pkgs;
     [
       # Core & System
-      bubblewrap
-      nano
-      wget
-      inxi
-      pciutils
-      xdg-user-dirs
-      htop
-      btop
       linux-firmware
-      spectre-meltdown-checker
+      git
+      gh
+      curl
+      wget
+      nano
+      vim
+      less
       fwupd
       fwupd-efi
-      wireplumber
-      lm_sensors
+      xdg-user-dirs
+      bubblewrap
+      spectre-meltdown-checker
+      parallel
       appimage-run
-      patchelf
-      dmidecode
+      dbus
       avahi
       samba
       cifs-utils
-      auto-cpufreq
+      gvfs
+      exfat
+      ntfs3g
+      udiskie
+      bzip3
+      gzip
+      gnutar
+      unrar
       unzip
+      zip
       fd
-
-      # WM & Compositor
-      awesome
-      picom
-
-      # Launcher & Notifications
-      rofi
-      rofi-emoji
-      dunst
-
-      # Bars & Widgets
-      lxappearance
-      arandr
-      xorg.xrandr
-      xorg.xdpyinfo
-      xsel
-      xclip
-      flameshot
-      feh
-      sxiv
-      networkmanagerapplet
-
-      # Polkit
-      polkit_gnome
-
-      # Fonts
-      nerd-fonts.jetbrains-mono
-      dejavu_fonts
-      noto-fonts
-      noto-fonts-emoji
-
-      # Icons & Themes
-      breeze-icons
-      breeze-gtk
-      papirus-icon-theme
-      adwaita-icon-theme
-
-      # Terminal
-      alacritty
-      zsh
-      zsh-powerlevel10k
-
-      # Emacs
-      emacs
-      ripgrep
-
-      # Tools
-      gparted
-      angryipscanner
-      caligula
-      sshx
-      timeshift
-      wrk
-      rustdesk-flutter
-
-      # Dev
-      git
-      pre-commit
-      shfmt
-      bats
-      parallel
-      shellcheck
-      vscodium-fhs
-      haskellPackages.ShellCheck
-      sublime-merge
       jq
-
-      # Web
-      filezilla
-      firefox
-      element-desktop
-      vesktop
-      thunderbird
-      riseup-vpn
-      transmission_4-qt
-
-      # Media & Video
-      mpv
-      playerctl
-
-      # VPN
-      wireguard-tools
+      ripgrep
+      htop
+      btop
+      lm_sensors
+      inxi
+      pciutils
+      patchelf
+      dmidecode
 
       # Vulkan & Mesa
       vulkan-tools
@@ -129,15 +64,99 @@
       xorg.libXi
       xorg.libXinerama
       xorg.libXScrnSaver
+      xorg.xorgserver
+      xorg.xinit
+      xorg.xrandr
+      xorg.xdpyinfo
+      xsel
+      xclip
+
+      # WM
+      awesome
+      picom
+      wireplumber
+      playerctl
+      arandr
+      networkmanagerapplet
+
+      # Polkit
+      polkit_gnome
+
+      # Theming
+      lxappearance
+      kdePackages.qt6ct
+      kdePackages.breeze-icons
+      kdePackages.breeze-gtk
+      papirus-icon-theme
+      adwaita-icon-theme
+
+      # Fonts
+      nerd-fonts.jetbrains-mono
+      dejavu_fonts
+      noto-fonts
+      noto-fonts-color-emoji
+
+      # Launchers
+      rofi
+      rofi-emoji
+
+      # Terminal
+      alacritty
+      zsh
+      zsh-powerlevel10k
 
       # File Manager
       ranger
+      ueberzug
       pcmanfm
+      lxqt-archiver
+
+      # Multimedia
+      vlc
+      sxiv
+      flameshot
+      krita
+      kdePackages.kdenlive
+      obs-studio
+
+      # Network
+      firefox
+      thunderbird
+      vesktop
+      element-desktop
+      filezilla
+      transmission_4-qt
+      angryipscanner
+      sshx
+      wrk
+      rustdesk-flutter
+
+      # Dev
+      neovim
+      vscodium-fhs
+      python3
+      python3.pip
+      python3.ipython
 
       # Office
-      onlyoffice-desktopeditors
+      libreoffice
 
-      # Wine & Gaming
+      # Printer
+      brlaser
+
+      # Tools
+      gparted
+      caligula
+      timeshift
+    ]
+
+    # Laptop Only
+    ++ lib.optionals vars.isLaptop [
+      auto-cpufreq
+    ]
+
+    # Wine & Gaming
+    ++ lib.optionals vars.gamingEnable [
       gnutls
       libxcrypt
       mangohud
@@ -173,13 +192,14 @@
       cabextract
     ]
 
-    # Conditional packages
+    # Docker
     ++ lib.optionals vars.dockerEnable [
       docker
       docker-compose
       docker-buildx
     ]
 
+    # VMWare
     ++ lib.optionals vars.vmwareEnable [
       linuxKernel.packages.linux_6_12.vmware
       vmware-workstation
@@ -187,8 +207,10 @@
 
   # Flatpak
   xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.config.common.default = "*";
   services.flatpak.enable = true;
 
   # Steam
-  programs.steam.enable = vars.steamEnable;
+  programs.steam.enable = vars.gamingEnable;
 }

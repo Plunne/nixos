@@ -1,14 +1,13 @@
-{ ... }:
+{ pkgs, vars, ... }:
 
 {
   # X11
   services.xserver = {
     enable = true;
-    videoDrivers = gpuDrivers.${vars.gpu} or [ "modesettings" ];
 
     # Keyboard layout
-    # xkb.layout = "fr";
-    # xkb.variant = "azerty";
+    xkb.layout = vars.keyLayout;
+    xkb.variant = vars.keyVariant;
 
     # AwesomeWM
     windowManager.awesome = {

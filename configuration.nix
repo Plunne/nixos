@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 let
 
@@ -7,8 +7,10 @@ let
 in
 {
   imports = [
+    ./machines/${vars.hostname}.nix
     ./hardware
     ./system
+    ./software
     ./packages.nix
   ];
 
