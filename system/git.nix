@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+    # Config
     environment.etc.".gitconfig".text =
     ''
 	[user]
