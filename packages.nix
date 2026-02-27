@@ -96,9 +96,8 @@
       noto-fonts
       noto-fonts-color-emoji
 
-      # Launchers
-      rofi
-      rofi-emoji
+      # Launcher
+      (rofi.override { plugins = [ rofi-emoji ]; })
 
       # Terminal
       alacritty
@@ -108,8 +107,9 @@
       # File Manager
       ranger
       ueberzug
+      poppler-utils
       pcmanfm
-      lxqt-archiver
+      lxqt.lxqt-archiver
 
       # Multimedia
       vlc
@@ -132,11 +132,12 @@
       rustdesk-flutter
 
       # Dev
+      cargo
+      rustc
+      nodejs
       neovim
       vscodium-fhs
-      python3
-      python3.pip
-      python3.ipython
+      python315
 
       # Office
       libreoffice
@@ -151,7 +152,7 @@
     ]
 
     # Laptop Only
-    ++ lib.optionals vars.isLaptop [
+    ++ lib.optionals (vars.machineType == "laptop") [
       auto-cpufreq
     ]
 
@@ -213,4 +214,5 @@
 
   # Steam
   programs.steam.enable = vars.gamingEnable;
+
 }

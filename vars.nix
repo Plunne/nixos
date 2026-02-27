@@ -1,9 +1,9 @@
 {
   # Machine
-  hostname = "bonbon";
-  machineType = "desktop"; # "desktop" or "laptop"
-  cpu = "amd"; # "amd" or "intel"
-  gpu = "amd"; # (VM -> "vm")
+  hostname = "cookie";
+  machineType = "desktop"; # desktop or laptop
+  cpu = "amd"; # amd or intel
+  gpu = "vm"; # amd, intel, nvidia, vm
   kernelVersion = "6_12";
   stateVersion = "25.11";
 
@@ -26,7 +26,4 @@
   vmwareEnable = false;
   gamingEnable = true;
   sshEnable = true;
-
-  # isLaptop
-  isLaptop = machineType == "laptop";
 }

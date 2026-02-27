@@ -9,17 +9,17 @@
 let
 
   gpuDrivers = {
-    "vm" = [ "modesettings" ];
-    "amd" = [ "amdgpu" ];
-    "intel" = [ "modesettings" ];
-    "nvidia" = [ "nvidia" ];
+    "amd" 	= [ "amdgpu" ];
+    "intel" 	= [ "modesettings" ];
+    "nvidia" 	= [ "nvidia" ];
+    "vm"	= [ "modesettings" ];
   };
 
   gpuPackages = {
     "amd" = with pkgs; [
-      libva
       libva-vdpau-driver
       libvdpau-va-gl
+      libva
     ];
     "intel" = with pkgs; [
       intel-gpu-tools
