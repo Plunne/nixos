@@ -134,6 +134,8 @@
       # Dev
       gcc
       gdb
+      gnumake
+      cmake
       cargo
       rustc
       rustup
