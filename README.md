@@ -9,7 +9,7 @@ NixOS/
 │
 ├─ hardware/
 │  ├─ default.nix
-│  ├─ componets.nix     # CPU/GPU
+│  ├─ components.nix     # CPU/GPU
 │  └─ peripherals.nix   # Audio/Bluetooth/Printers/etc.
 │
 ├─ machines/

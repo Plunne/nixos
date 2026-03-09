@@ -132,8 +132,11 @@
       rustdesk-flutter
 
       # Dev
+      gcc
+      gdb
       cargo
       rustc
+      rustup
       nodejs
       neovim
       vscodium-fhs

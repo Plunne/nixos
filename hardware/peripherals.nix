@@ -33,11 +33,11 @@ in
   # Printing
   services.printing.enable = true;
   services.printing.cups-pdf.enable = true;
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
+  # services.avahi = {
+  #   enable = true;
+  #   nssmdns4 = true;
+  #   openFirewall = true;
+  # };
 
   # Touchpad
   services.libinput = lib.mkIf isLaptop {
