@@ -114,6 +114,7 @@
       kdePackages.dolphin
       kdePackages.qtsvg
       kdePackages.ark
+      kdePackages.konsole
 
       # Multimedia
       vlc
