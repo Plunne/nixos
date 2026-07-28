@@ -58,16 +58,16 @@
       mesa-demos
 
       # X11
-      xorg.libXft
-      xorg.libXrandr
-      xorg.libXcomposite
-      xorg.libXi
-      xorg.libXinerama
-      xorg.libXScrnSaver
-      xorg.xorgserver
-      xorg.xinit
-      xorg.xrandr
-      xorg.xdpyinfo
+      libxft
+      libxrandr
+      libxcomposite
+      libxi
+      libxinerama
+      libxscrnsaver
+      xorgserver
+      xinit
+      xrandr
+      xdpyinfo
       xsel
       xclip
 
@@ -80,7 +80,7 @@
       networkmanagerapplet
 
       # Polkit
-      polkit_gnome
+      kdePackages.polkit-kde-agent-1
 
       # Theming
       lxappearance
@@ -108,8 +108,12 @@
       ranger
       ueberzug
       poppler-utils
-      pcmanfm
-      lxqt.lxqt-archiver
+      kdePackages.kio
+      kdePackages.kio-fuse
+      kdePackages.kio-extras
+      kdePackages.dolphin
+      kdePackages.qtsvg
+      kdePackages.ark
 
       # Multimedia
       vlc
@@ -122,7 +126,7 @@
       # Network
       firefox
       thunderbird
-      vesktop
+      discord
       element-desktop
       filezilla
       transmission_4-qt
@@ -219,5 +223,8 @@
 
   # Steam
   programs.steam.enable = vars.gamingEnable;
+
+  # Dolphin
+  environment.etc."xdg/menus/applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
 }
