@@ -7,7 +7,7 @@ let
 in
 {
   imports = [
-    ./machines/${vars.hostname}.nix
+    ./hardware-configuration.nix
     ./hardware
     ./system
     ./software

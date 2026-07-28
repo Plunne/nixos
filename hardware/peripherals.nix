@@ -24,7 +24,7 @@ in
   services.blueman.enable = true;
 
   # Brightness
-  programs.light.enable = isLaptop;
+  #programs.light.enable = isLaptop;
 
   # Power & Battery
   services.power-profiles-daemon.enable = isLaptop;

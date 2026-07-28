@@ -1,9 +1,9 @@
 {
   # Machine
-  hostname = "cookie";
+  hostname = "bonbon";
   machineType = "desktop"; # desktop or laptop
   cpu = "amd"; # amd or intel
-  gpu = "vm"; # amd, intel, nvidia, vm
+  gpu = "amd"; # amd, intel, nvidia, vm
   kernelVersion = "6_12";
   stateVersion = "25.11";
 
@@ -22,7 +22,7 @@
   keyVariant = ""; # "" for us, "azerty" for fr
 
   # Miscs
-  dockerEnable = true;
+  dockerEnable = false;
   vmwareEnable = false;
   gamingEnable = true;
   sshEnable = true;
