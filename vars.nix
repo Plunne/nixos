@@ -4,8 +4,8 @@
   machineType = "desktop"; # desktop or laptop
   cpu = "amd"; # amd or intel
   gpu = "amd"; # amd, intel, nvidia, vm
-  kernelVersion = "6_12";
-  stateVersion = "25.11";
+  kernelVersion = "7_1";
+  stateVersion = "26.05";
 
   # User
   username = "plunne";

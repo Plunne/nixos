@@ -148,6 +148,7 @@
       neovim
       vscodium-fhs
       python315
+      python3Packages.ipython
 
       # Office
       libreoffice
@@ -212,7 +213,7 @@
 
     # VMWare
     ++ lib.optionals vars.vmwareEnable [
-      linuxKernel.packages.linux_6_12.vmware
+      linuxKernel.packages.linux_"${vars.kernelVersion}".vmware
       vmware-workstation
     ];
 
